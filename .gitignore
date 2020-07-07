@@ -1,0 +1,10 @@
+target/
+.*
+!.gitignore
+
+######################
+# IntelliJ IDEA
+######################
+*.iml
+.idea/
+.idea/workspace.xml
