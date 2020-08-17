@@ -1,12 +1,11 @@
 package br.com.cca.perfil.domain;
 
-import br.com.cca.menu.domain.Menu;
+import br.com.cca.commons.domain.AbstractDomain;
+import br.com.cca.menu.domain.MenuDTO;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * User: Leandro Antonelli
@@ -14,19 +13,11 @@ import java.util.Map;
  */
 @Getter
 @Setter
-public class Perfil {
+public class Perfil extends AbstractDomain {
 
     private Integer idPerfil;
 
     private String dsName;
 
-    private List<Menu> menus;
-
-    public Map<String, Object> toMap() {
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("id_perfil", idPerfil);
-        map.put("ds_name", dsName);
-        return map;
-    }
+    private List<MenuDTO> menus;
 }

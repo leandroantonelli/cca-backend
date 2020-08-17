@@ -6,7 +6,9 @@ import br.com.cca.perfil.mapper.PerfilRowMapper;
 import br.com.cca.perfil.sql.PerfilSql;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: Leandro Antonelli
@@ -20,20 +22,39 @@ public class PerfilRepository extends AbstractRepository {
         return query(PerfilSql.findAll, new PerfilRowMapper());
     }
 
+    public Perfil findByPerfil(Integer idPerfil) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("id_perfil", idPerfil);
+
+        return queryForObject(PerfilSql.findByPerfil, map, new PerfilRowMapper());
+
+    }
+
     public Integer insert(Perfil perfil) {
 
-        Long id = insert(PerfilSql.insert, perfil.toMap());
+        Map<String, Object> map = new HashMap<>();
+        map.put("ds_name", perfil.getDsName());
+
+        Long id = insert(PerfilSql.insert, map, "idperfil");
 
         return id.intValue();
     }
 
     public void update(Perfil perfil) {
 
-        update(PerfilSql.update, perfil.toMap());
+        Map<String, Object> map = new HashMap<>();
+        map.put("id_perfil", perfil.getIdPerfil());
+        map.put("ds_name", perfil.getDsName());
+
+        update(PerfilSql.update, map);
     }
 
-    public void delete(Perfil perfil) {
+    public void delete(Integer id) {
 
-        delete(PerfilSql.delete, perfil.toMap());
+        Map<String, Object> map = new HashMap<>();
+        map.put("id_perfil", id);
+
+        delete(PerfilSql.delete, map);
     }
 }

@@ -5,6 +5,7 @@ create table users(
 	dspassword varchar,
 	dscellphone varchar(20),
 	dscpfcpnj varchar(20),
+	fgactive boolean not null,
 	idperfil integer references perfil(idperfil),
 	idaddress integer references address(idaddress),
 	primary key (iduser)

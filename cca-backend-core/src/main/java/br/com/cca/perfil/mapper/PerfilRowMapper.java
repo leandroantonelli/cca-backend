@@ -1,5 +1,6 @@
 package br.com.cca.perfil.mapper;
 
+import br.com.cca.commons.mapper.AbstractRowMapper;
 import br.com.cca.perfil.domain.Perfil;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -10,7 +11,7 @@ import java.sql.SQLException;
  * User: Leandro Antonelli
  * Date: 20/06/20
  */
-public class PerfilRowMapper implements RowMapper<Perfil> {
+public class PerfilRowMapper extends AbstractRowMapper implements RowMapper<Perfil> {
 
     @Override
     public Perfil mapRow(ResultSet rs, int rowNum) throws SQLException {

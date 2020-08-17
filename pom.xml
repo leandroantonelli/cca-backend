@@ -26,6 +26,7 @@
 		<spring-security-oauth.version>2.3.6.RELEASE</spring-security-oauth.version>
 		<spring-security-jwt.version>1.0.10.RELEASE</spring-security-jwt.version>
 		<commons-lang.version>2.6</commons-lang.version>
+		<spring-oxm.version>5.2.8.RELEASE</spring-oxm.version>
 	</properties>
 
 	<modules>

@@ -10,6 +10,16 @@ class PerfilSql {
             perfil 
     """
 
+    public static String findByPerfil = """
+        select
+            idperfil,
+            dsname
+        from
+            perfil 
+        where
+            idperfil = :id_perfil
+    """
+
     public static String insert = """
         insert into perfil
             (dsname)
@@ -18,7 +28,7 @@ class PerfilSql {
     """
 
     public static String update = """
-        update from
+        update
             perfil
         set
             dsname = :ds_name
@@ -33,24 +43,3 @@ class PerfilSql {
             idperfil = :id_perfil
     """
 }
-
-/*
-create table perfil(
-	idperfil serial,
-	dsname varchar(255),
-	primary key (idperfil)
-);
-
-ALTER TABLE perfil ADD CONSTRAINT perfil_name UNIQUE (dsname);
-
-
-create table menu(
-	idmenu serial,
-	dsmenu varchar(100),
-	idparent integer,
-	dsclassicon varchar(500),
-	dsrouterlink varchar(100),
-	nrorder integer,
-	primary key (idmenu)
-)
- */

@@ -1,10 +1,12 @@
 package br.com.cca.perfil.endpoint;
 
+import br.com.cca.commons.endpoint.AbstractCrudEndpoint;
+import br.com.cca.menu.domain.MenuDTO;
 import br.com.cca.perfil.domain.Perfil;
 import br.com.cca.perfil.service.PerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,13 +18,24 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/perfil")
-public class PerfilEndpoint {
+public class PerfilEndpoint extends AbstractCrudEndpoint<Perfil, PerfilService> {
 
     @Autowired
     private PerfilService perfilService;
 
-    @GetMapping()
-    public ResponseEntity<List<Perfil>> findAll() {
-        return ResponseEntity.ok(perfilService.findAll());
+    @GetMapping(value = "/menu/{idPerfil}")
+    public List<MenuDTO> findMenusByPerfil(@PathVariable Integer idPerfil) {
+        return perfilService.findMenusByPerfil(idPerfil);
+    }
+
+    @GetMapping(value = "/menu/all")
+    private List<MenuDTO> findAllMenu() {
+        return perfilService.findAllMenu();
+    }
+
+
+    @Override
+    protected PerfilService getService() {
+        return perfilService;
     }
 }

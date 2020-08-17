@@ -46,7 +46,7 @@ public class CCAAuthenticationProviderImpl extends AbstractUserDetailsAuthentica
 
             if (user != null) {
 
-                String dsPassEncrypt = securityService.encrypt(token.getCredentials().toString(), token.getName());
+                String dsPassEncrypt = securityService.encrypt(token.getCredentials().toString(), user.getIdUser().toString());
 
                 if (dsPassEncrypt.equals(user.getDsPassword())) {
                     UserCommons.addPermissoes(user);
